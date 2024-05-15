@@ -1,0 +1,33 @@
+#include <stdio.h>
+int fibonacci(int n) 
+{
+    if (n <= 1)
+        return n;
+    else
+        return fibonacci(n - 1) + fibonacci(n - 2);
+}
+void fibonacciSeriesAndSum(int n, int *series, int *total_sum) 
+{
+    *total_sum = 0;
+    for (int i = 0; i < n; i++) 
+	{
+        series[i] = fibonacci(i);
+        *total_sum += series[i];
+    }
+}
+
+int main() {
+    int n;
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+    int series[n];
+    int total_sum;
+    fibonacciSeriesAndSum(n, series, &total_sum);
+    printf("Fibonacci Series: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", series[i]);
+    }
+    printf("\n");
+    printf("Sum of Fibonacci Series: %d\n", total_sum);
+    return 0;
+}
