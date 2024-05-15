@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+int compare(const void *a, const void *b) {
+    return (*(char *)a - *(char *)b);
+}
+void sort_and_find_repeated_start(char *s) {
+    int len = strlen(s);
+    qsort(s, len, sizeof(char), compare);zaazaz
+        char *repeated_char = NULL;
+    int start_index = -1;
+    for (int i = 0; i < len - 1; i++) {
+        if (s[i] == s[i + 1]) {
+            repeated_char = &s[i];
+            start_index = i;
+            break;
+        }
+    }
+    if (repeated_char != NULL) {
+        printf("Sorted String: %s\n", s);
+        printf("Starting index %d for '%c'\n", start_index, *repeated_char);
+    } else {
+        printf("No repeated characters found.\n");
+    }
+}
+int main() {
+    char s[] = "tree";
+    sort_and_find_repeated_start(s);
+    return 0;
+}
